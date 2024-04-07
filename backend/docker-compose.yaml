@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  magicpitch_service:
+    image: postgres
+    container_name: postgres_container
+    environment:
+      POSTGRES_DB: 'magicpitch_db'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: '1234'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    volumes:
+      - .:/app
+    container_name: user_container
+    ports:
+      - 8000:8000
+    image: sahal0416/user_details:latest
+    # command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - magicpitch_service
+  
+volumes:
+  postgres_data:
+ 
