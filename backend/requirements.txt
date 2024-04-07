@@ -1,0 +1,12 @@
+asgiref
+Django
+django-cors-headers
+djangorestframework
+drf-yasg
+inflection
+packaging
+pytz
+PyYAML
+sqlparse
+tzdata
+uritemplate
